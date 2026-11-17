@@ -147,7 +147,8 @@ def estimate_from_prices(csv_source, last_36_months=False):
     """Estimate annual returns, volatility, and correlations from monthly Adj Close CSV data.
 
     The CSV must have Date first, oldest date first, and one positive-price column
-    per asset. Estimated returns are historical averages, not forecasts.
+    per asset. Returns are annualized arithmetic means of monthly returns
+    (mean × 12), not compounded returns, CAGRs, or forecasts.
     """
     close_after = False
     if isinstance(csv_source, (str, bytes)):

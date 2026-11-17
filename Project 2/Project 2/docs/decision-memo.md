@@ -4,7 +4,7 @@ AI used: Codex helped write and debug the Python app and organize documentation;
 
 ## Committee ask and mandate
 
-Decide whether to adopt, allocate to, rebalance, pilot, or reject a lowest-volatility portfolio-selection process. The mandate uses a seven-year horizon, a 6.5% annual gross expected-return objective, VTI/VXUS/BND/SGOV as the investable universe, a 60% VTI / 40% BND transparent benchmark, annualized volatility as risk measure, long-only weights, and at least 3% in reserve-eligible SGOV.
+Decide whether to adopt, allocate to, rebalance, pilot, or reject a lowest-volatility portfolio-selection process. The mandate uses a seven-year horizon, a 6.5% annual gross expected-return objective, VTI/VXUS/BND/SGOV as the investable universe, a 60% VTI / 40% BND transparent benchmark, annualized volatility as risk measure, long-only weights, and at least 3% in reserve-eligible SGOV. Return estimates are annualized arithmetic means of monthly returns (mean × 12), not compounded returns, CAGRs, or forecasts.
 
 ## Recommendation: paper pilot, no funded allocation
 

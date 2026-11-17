@@ -4,7 +4,7 @@ AI used: Codex helped write and debug the Python app and organize documentation;
 
 ## Source and as-of boundary
 
-`prices.csv` contains monthly adjusted closes for VTI, VXUS, BND, and SGOV from October 2021 through September 2026. Sources and download date are recorded in `my_portfolio_mandate.md`. These are historical estimates, not forecasts. The point-in-time signal is Moody's Seasoned Baa Corporate Bond Yield (FRED/ALFRED BAA). On 30 September 2026, the latest knowable month was August 2026 at 6.32%; September's 6.47% value was later information and is not used for that decision date.
+`prices.csv` contains monthly adjusted closes for VTI, VXUS, BND, and SGOV from October 2021 through September 2026. Sources and download date are recorded in `my_portfolio_mandate.md`. The return input is the annualized arithmetic mean of monthly returns (mean × 12), not a compounded return, CAGR, or forecast. The point-in-time signal is Moody's Seasoned Baa Corporate Bond Yield (FRED/ALFRED BAA). On 30 September 2026, the latest knowable month was August 2026 at 6.32%; September's 6.47% value was later information and is not used for that decision date.
 
 ## Tests and results
 

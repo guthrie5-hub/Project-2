@@ -23,6 +23,7 @@ Optional terminal checks:
 python3 portfolio.py
 python3 mandate.py
 python3 asof.py
+python3 -m unittest discover -s tests -v
 ```
 
 ## Decision
@@ -33,6 +34,7 @@ python3 asof.py
 
 - `prices.csv` has monthly adjusted closes for VTI, VXUS, BND, and SGOV, October 2021 through September 2026, oldest first.
 - Source and download details are in `my_portfolio_mandate.md`. Historical mean returns are estimates, not forecasts.
+- The app calculates return estimates as an **annualized arithmetic mean of monthly returns** (monthly mean × 12). That is not a compounded return or CAGR.
 - The model searches long-only allocations in five-percentage-point increments. It does not optimize taxes or a calendar-year loss limit; the 0.20% implementation-cost case is a stress display, not an optimization input.
 - The BAA rate series may be used only with its matching ALFRED vintage date, as documented in `my_portfolio_mandate.md`.
 
@@ -52,7 +54,10 @@ python3 asof.py
 | `mandate.py`, `meridian_mandate.md` | Lab 13 mandate training engine and written classification. |
 | `asof.py`, `asof_app.py` | Point-in-time training and FRED/ALFRED evidence. |
 | `skills/` | Inspection copies of the three local Codex skill instructions used for the SEC panel. |
+| `tests/` | Small automated checks for the course known-answer arithmetic and a no-feasible-mix edge case. |
 
 ## Known limitations and ownership
 
 The mandate is a 6.5% annual gross expected-return objective over a seven-year horizon; the universe is VTI, VXUS, BND, and SGOV; the transparent benchmark is 60% VTI / 40% BND; the risk measure is annualized volatility; limits are long-only weights and at least 3% SGOV reserve-eligible weight. The portfolio owner—not the optimizer—owns these choices. A cold reviewer may reject or restrict use if the price data are unsupported, the historical estimates are used as forecasts, the mandate changes, a check fails, or the cold run cannot reproduce the visible output.
+
+The root-level records marked **“Superseded draft”** are retained only as archival Lab history. The current submission records live in `docs/`.

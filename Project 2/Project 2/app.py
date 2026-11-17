@@ -191,7 +191,10 @@ except (UnicodeDecodeError, ValueError) as error:
     st.error(f"Could not use the uploaded CSV: {error}")
     st.stop()
 
-st.write("Historical price estimates are estimates from past returns, not forecasts.")
+st.write(
+    "Return estimates are annualized arithmetic means of monthly returns (mean × 12), "
+    "not compounded returns, CAGRs, or forecasts."
+)
 st.subheader("Expected-return and reserve-eligibility inputs")
 edited_sleeves = {}
 for name, values in loaded_sleeves.items():

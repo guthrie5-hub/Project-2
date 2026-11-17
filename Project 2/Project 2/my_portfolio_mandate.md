@@ -4,7 +4,7 @@
 
 | Item | Choice |
 |---|---|
-| Objective | Earn a 6.5% annual expected return over a five-year horizon. |
+| Objective | Earn a 6.5% annual expected return over a seven-year horizon. |
 | Hard constraint | Keep at least 3% of portfolio value in the cash-like Treasury sleeve (SGOV). |
 
 ## Fund universe
@@ -21,7 +21,7 @@
 ```mermaid
 flowchart TD
     A[prices.csv: monthly adjusted closes] --> B[Monthly returns]
-    B --> C[Historical mean return × 12]
+    B --> C[Arithmetic mean monthly return × 12]
     B --> D[Monthly standard deviation × √12]
     B --> E[Correlation matrix]
     C --> F[Return estimates]
@@ -39,7 +39,7 @@ flowchart TD
 
 ## Historical-estimate app runs
 
-These returns, volatilities, correlations, and portfolio results are historical estimates from the downloaded monthly prices, not forecasts.
+These returns are **annualized arithmetic means of monthly returns** (monthly arithmetic mean × 12), not compounded returns, forecasts, or CAGRs. Volatilities and correlations are also historical estimates from the downloaded monthly prices.
 
 | Run | Weights: VTI / VXUS / BND / SGOV | Expected return | Volatility | Reserve-eligible weight |
 |---|---:|---:|---:|---:|
