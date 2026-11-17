@@ -1,6 +1,6 @@
 # Project 2 — Constrained portfolio search
 
-Built with AI help; education, not investment advice.
+AI used: Codex helped write and debug the Python app and organize documentation; the analysis and committee decision are the student's. Education, not investment advice.
 
 ## Committee question
 
@@ -27,13 +27,13 @@ python3 asof.py
 
 ## Decision
 
-**Pilot, not adopt.** The all-month historical estimate produces 30% VTI / 5% VXUS / 0% BND / 65% SGOV, with 6.54% estimated return, 5.47% estimated volatility, and 65% reserve-eligible weight. Adopt only after the portfolio owner confirms that the five-year history and the 6.5% objective remain suitable; monitor the return assumptions, especially VTI. Reconsider the pilot if a lower VTI return estimate or the trailing-36-month window continues to produce a materially different allocation.
+**Pilot the process with 0% funded capital; do not adopt a live allocation yet.** The all-month historical estimate produces 30% VTI / 5% VXUS / 0% BND / 65% SGOV, with 6.54% estimated gross return, 5.47% estimated volatility, and 65% reserve-eligible weight. A 0.20% annual-cost stress reduces the estimated net return to 6.34%, below the 6.5% objective. The paper-pilot reference range across the tested base/window/estimate cases is VTI 5–40%, VXUS 0–40%, BND 0%, and SGOV 50–85%; the breadth of that range is why it is not a live allocation recommendation.
 
 ## Data and boundaries
 
 - `prices.csv` has monthly adjusted closes for VTI, VXUS, BND, and SGOV, October 2021 through September 2026, oldest first.
 - Source and download details are in `my_portfolio_mandate.md`. Historical mean returns are estimates, not forecasts.
-- The model searches long-only allocations in five-percentage-point increments. It does not optimize taxes, trading costs, or a calendar-year loss limit.
+- The model searches long-only allocations in five-percentage-point increments. It does not optimize taxes or a calendar-year loss limit; the 0.20% implementation-cost case is a stress display, not an optimization input.
 - The BAA rate series may be used only with its matching ALFRED vintage date, as documented in `my_portfolio_mandate.md`.
 
 ## Repository map
@@ -45,14 +45,14 @@ python3 asof.py
 | `prices.csv` | Five years of monthly adjusted-close inputs. |
 | `my_portfolio_mandate.md` | Mandate, data card, base/trailing results, and decision. |
 | `visible_output.md` | Results a reviewer can inspect without running code. |
-| `committee_memo.md` | Committee recommendation and conditions. |
-| `validation_record.md` | Known-answer, stress, point-in-time, and open validation evidence. |
-| `locked_changed_input_record.md` | Human-authored prediction record; completion status is explicit. |
-| `cold_run_record.md` | Partner cold-run record; completion status is explicit. |
+| `docs/decision-memo.md` | Committee recommendation and conditions. |
+| `docs/validation-and-ai-use.md` | Known-answer, stress, point-in-time, AI-use, and open validation evidence. |
+| `docs/locked-changed-input-record.md` | Human-authored prediction record; completion status is explicit. |
+| `docs/cold-run-record.md` | Partner cold-run record; completion status is explicit. |
 | `mandate.py`, `meridian_mandate.md` | Lab 13 mandate training engine and written classification. |
 | `asof.py`, `asof_app.py` | Point-in-time training and FRED/ALFRED evidence. |
 | `skills/` | Inspection copies of the three local Codex skill instructions used for the SEC panel. |
 
 ## Known limitations and ownership
 
-The portfolio owner—not the optimizer—owns the return objective, reserve classification, and adoption decision. A cold reviewer may reject or restrict use if the price data are unsupported, the historical estimates are used as forecasts, the mandate changes, a check fails, or the cold run cannot reproduce the visible output.
+The mandate is a 6.5% annual gross expected-return objective over a seven-year horizon; the universe is VTI, VXUS, BND, and SGOV; the transparent benchmark is 60% VTI / 40% BND; the risk measure is annualized volatility; limits are long-only weights and at least 3% SGOV reserve-eligible weight. The portfolio owner—not the optimizer—owns these choices. A cold reviewer may reject or restrict use if the price data are unsupported, the historical estimates are used as forecasts, the mandate changes, a check fails, or the cold run cannot reproduce the visible output.

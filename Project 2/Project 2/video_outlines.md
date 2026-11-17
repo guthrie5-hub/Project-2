@@ -1,4 +1,10 @@
-# Project 2 video outlines
+# Superseded draft — use `docs/video-outlines.md`
+
+The final video outlines are [`docs/video-outlines.md`](docs/video-outlines.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived video outlines
 
 Built with AI help; education, not investment advice.
 

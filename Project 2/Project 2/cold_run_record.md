@@ -1,4 +1,10 @@
-# README-only cold-run record
+# Superseded draft — use `docs/cold-run-record.md`
+
+The final cold-run record is [`docs/cold-run-record.md`](docs/cold-run-record.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived cold-run record
 
 Built with AI help; education, not investment advice.
 

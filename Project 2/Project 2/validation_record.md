@@ -1,4 +1,10 @@
-# Project 2 validation record
+# Superseded draft — use `docs/validation-and-ai-use.md`
+
+The final validation record is [`docs/validation-and-ai-use.md`](docs/validation-and-ai-use.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived validation record
 
 Built with AI help; education, not investment advice.
 

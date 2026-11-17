@@ -1,4 +1,10 @@
-# Project 2 committee memo
+# Superseded draft — use `docs/decision-memo.md`
+
+The final decision memo is [`docs/decision-memo.md`](docs/decision-memo.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived committee memo
 
 Built with AI help; education, not investment advice.
 

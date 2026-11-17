@@ -1,4 +1,10 @@
-# Visible Project 2 output
+# Superseded draft — use `docs/visible-output.md`
+
+The final visible output is [`docs/visible-output.md`](docs/visible-output.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived visible output
 
 Built with AI help; education, not investment advice.
 

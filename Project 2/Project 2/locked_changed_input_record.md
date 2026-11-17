@@ -1,4 +1,10 @@
-# Locked Changed-Input Record
+# Superseded draft — use `docs/locked-changed-input-record.md`
+
+The final Locked Changed-Input Record is [`docs/locked-changed-input-record.md`](docs/locked-changed-input-record.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived Locked Changed-Input Record
 
 Built with AI help; education, not investment advice.
 

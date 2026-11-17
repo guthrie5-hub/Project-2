@@ -52,7 +52,9 @@ Largest weight change between the two mixes: **25 percentage points** (VTI). The
 
 **Partner attack:** The 12.0% historical VTI return estimate is the estimate I distrust most; lowering it to 8.0% changes the all-month answer to 10% VTI, 40% VXUS, 0% BND, and 50% SGOV, with 6.57% expected return and 7.50% volatility. **My answer:** The mix changes materially, so the historical VTI average is a load-bearing estimate rather than a forecast; I would monitor future equity-return assumptions and would not treat the original 30% VTI mix as certain.
 
-## Project 2 starting-allocation call
+## Lab 15 starting-allocation call (historical)
+
+This was the earlier Lab 15 call before the final Project 2 cost/constraint stresses. The final committee decision is in [`docs/decision-memo.md`](docs/decision-memo.md).
 
 **Pilot, not adopt:** Use the all-month 30% VTI / 5% VXUS / 0% BND / 65% SGOV mix only as the Project 2 starting allocation. Reoptimize before adopting it if the VTI return estimate is revised down to 8.0% or if the trailing-36-month evidence remains the more relevant regime, because those changes materially alter the weights and show that the optimizer amplifies estimate risk.
 

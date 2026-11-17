@@ -1,4 +1,10 @@
-# Project 2 submission manifest
+# Superseded draft — use `docs/submission-manifest.md`
+
+The final submission manifest is [`docs/submission-manifest.md`](docs/submission-manifest.md). The text below is archived and is not the submission record.
+
+---
+
+# Archived Project 2 submission manifest
 
 Built with AI help; education, not investment advice.
 
