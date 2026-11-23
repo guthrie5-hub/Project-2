@@ -1,0 +1,17 @@
+Video 1 — Research evolution
+
+I used Codex to help write and debug the app and organize documentation. The analysis and decision are mine. This is education, not investment advice.
+
+This Project 2 asks whether a committee should adopt a constrained portfolio-selection process. My conclusion is a paper pilot with zero funded capital, not live adoption.
+
+The mandate has a seven-year horizon and a 6.5% annual gross expected-return objective. The investable universe is VTI, VXUS, BND, and SGOV. I use annualized volatility as the risk measure. The process permits only long positions and requires at least 3% in reserve-eligible SGOV.
+
+The transparent comparison benchmark is 60% VTI and 40% BND. One important limit is that the 6.5% objective is gross of costs, so the app cannot claim that the process achieves a net return objective.
+
+The process starts with monthly adjusted prices. It converts them to monthly returns, then calculates annualized arithmetic mean returns, volatility, and correlations. It searches long-only weights in five-percentage-point steps and keeps the lowest-volatility mix that meets the return and reserve rules.
+
+This definition matters. Arithmetic mean monthly return times 12 is a historical estimate. It is not a CAGR and it is not a forecast. I added the historical price file, two baselines, mandate verdicts, point-in-time evidence, and stresses to the original training engine.
+
+I also checked one AI-assisted point-in-time rule. On September 30, 2026, August BAA at 6.32% was the latest knowable monthly observation. September at 6.47% was published later, so using it on September 30 would be look-ahead bias. The process keeps BAA only with the matching vintage date.
+
+The system changed from a possible allocation tool to a paper pilot because the cost stress breaks the stated objective.

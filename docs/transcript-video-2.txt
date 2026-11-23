@@ -1,0 +1,15 @@
+Video 2 — Code and validation
+
+I used Codex to help write and debug the app and organize documentation. The analysis and decision are mine. This is education, not investment advice.
+
+The core calculation sits in portfolio.py. The app reads the price file, calculates monthly returns, and uses the arithmetic mean multiplied by 12 as the expected-return input. It calculates covariance as correlation times the two asset volatilities.
+
+The model first reproduced the training benchmark at 6.80% return and 10.46% volatility. It also refuses a correlation outside negative one to positive one.
+
+For the company-specific sensitivity, lowering only VTI's expected return from 12% to 8% changed the answer to 10% VTI, 40% VXUS, 0% BND, and 50% SGOV. The last-36-month sample produces a different allocation again. A 70% SGOV reserve floor produces no feasible five-point mix at the 6.5% objective.
+
+I will now show the app. The Overview tab displays the current allocation and checkable mandate verdict. The Allocations tab shows the portfolio weights. Baselines and Stresses compare equal weight, the 60/40 benchmark, the constrained base, and the stress cases. The Evidence tab records the BAA vintage rule and the committee recommendation.
+
+The constrained base is 30% VTI, 5% VXUS, 0% BND, and 65% SGOV. It has a 6.54% estimated gross return, 5.47% estimated volatility, and 65% reserve-eligible weight.
+
+The critical validation result is the cost stress. A 0.20% annual implementation cost reduces the base return from 6.54% gross to 6.34% net. That is below the 6.5% objective. The test does not prove a loss. It shows the evidence does not support funded adoption.

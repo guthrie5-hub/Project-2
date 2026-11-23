@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 2 Portfolio Decision</title>
+<style>
+  :root { --ink:#182536; --blue:#123c69; --orange:#d96f32; --muted:#657487; --paper:#f8f7f3; --line:#d9dee7; --pale:#eaf1f7; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#28384a; color:var(--ink); font-family:Arial, Helvetica, sans-serif; }
+  .slide { display:none; position:relative; width:min(1280px, 100vw); min-height:min(720px, 100vh); margin:auto; padding:56px 78px 48px; background:var(--paper); }
+  .slide.active { display:block; }
+  h1 { margin:0 0 18px; color:var(--blue); font-size:58px; line-height:1.03; letter-spacing:-1.8px; }
+  h2 { margin:0 0 24px; color:var(--blue); font-size:36px; line-height:1.1; }
+  h3 { margin:0 0 9px; color:var(--blue); font-size:20px; }
+  p, li { font-size:22px; line-height:1.36; }
+  p { margin:0 0 14px; }
+  ul { margin:10px 0 0 24px; padding:0; }
+  li { margin:8px 0; }
+  .eyebrow { margin-bottom:19px; color:var(--orange); font-size:16px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; }
+  .sub { max-width:860px; color:var(--muted); font-size:26px; }
+  .rule { width:92px; height:4px; margin:28px 0; background:var(--orange); }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .three { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; align-items:start; }
+  .metric { border-top:2px solid var(--blue); padding-top:14px; margin:18px 0; }
+  .metric strong { display:block; color:var(--blue); font-size:39px; letter-spacing:-1px; }
+  .metric span { color:var(--muted); font-size:18px; }
+  .flow { margin:26px 0; padding:22px; border-left:5px solid var(--orange); background:var(--pale); font-size:24px; line-height:1.45; }
+  table { width:100%; border-collapse:collapse; margin-top:14px; font-size:18px; }
+  th { padding:10px 8px; border-bottom:2px solid var(--blue); color:var(--blue); text-align:left; }
+  td { padding:11px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .small { font-size:18px; color:var(--muted); }
+  .note { position:absolute; left:78px; right:78px; bottom:38px; color:var(--muted); font-size:14px; line-height:1.35; }
+  .counter { position:absolute; right:78px; bottom:38px; color:var(--muted); font-size:16px; }
+  .controls { position:fixed; right:22px; bottom:18px; color:white; font-size:14px; opacity:.9; }
+  @media print { body { background:white; } .slide { display:block; width:1280px; min-height:720px; page-break-after:always; } .controls { display:none; } }
+</style>
+</head>
+<body>
+
+<section class="slide active">
+  <div class="eyebrow">FIN 43900 · Project 2</div>
+  <h1>Portfolio Process<br>Committee Decision</h1>
+  <div class="rule"></div>
+  <p class="sub">A constrained portfolio search for VTI, VXUS, BND, and SGOV<br>Seven-year mandate · 6.5% gross objective · annualized volatility risk measure</p>
+  <div class="two" style="margin-top:58px; max-width:860px">
+    <div class="metric"><strong>Paper pilot</strong><span>0% funded capital</span></div>
+    <div class="metric"><strong>6.54%</strong><span>Base estimated arithmetic annual return</span></div>
+  </div>
+  <div class="counter">1 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 1 · Research evolution</div>
+  <h2>Mandate and decision boundary</h2>
+  <div class="two">
+    <div>
+      <h3>Committee question</h3>
+      <p>Can the committee adopt a lowest-volatility portfolio process that meets the stated return objective and reserve rule?</p>
+      <h3 style="margin-top:28px">Mandate</h3>
+      <p>Seven-year horizon; 6.5% annual gross expected-return objective; long-only weights; at least 3% in cash-like SGOV.</p>
+    </div>
+    <div>
+      <h3>Universe and benchmark</h3>
+      <p>VTI, VXUS, BND, and SGOV. The transparent benchmark is 60% VTI and 40% BND.</p>
+      <h3 style="margin-top:28px">Important boundary</h3>
+      <p>The objective is gross of costs. The app cannot establish future net-of-cost performance from historical returns.</p>
+    </div>
+  </div>
+  <div class="counter">2 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 1 · Research evolution</div>
+  <h2>From price data to a constrained answer</h2>
+  <div class="flow">Monthly adjusted closes → monthly returns → annualized arithmetic mean return, volatility, and correlations → five-point long-only mixes → objective and reserve checks → lowest-volatility valid mix</div>
+  <div class="two">
+    <div>
+      <h3>What changed</h3>
+      <p>The early work demonstrated the search on training inputs. The final app adds the user’s ETF price file, baselines, constraint verdicts, point-in-time evidence, and stress cases.</p>
+    </div>
+    <div>
+      <h3>Return definition</h3>
+      <p>Return estimates equal the arithmetic mean monthly return multiplied by 12. They are historical estimates, not CAGRs or forecasts.</p>
+    </div>
+  </div>
+  <div class="note">Price inputs: VTI, VXUS, BND, and SGOV monthly adjusted closes, October 2021 to September 2026. Source and data card: my_portfolio_mandate.md.</div>
+  <div class="counter">3 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 2 · Technical walkthrough</div>
+  <h2>Portfolio engine</h2>
+  <div class="two">
+    <div>
+      <h3>Search logic</h3>
+      <p>`search_lowest_risk_mix` enumerates long-only allocations in five-percentage-point steps. It rejects a mix below the return objective or reserve floor.</p>
+      <p>For every remaining mix, the engine calculates covariance from volatility and correlation, then keeps the lowest-volatility answer.</p>
+    </div>
+    <div>
+      <h3>Base output</h3>
+      <div class="metric"><strong>30 / 5 / 0 / 65</strong><span>VTI / VXUS / BND / SGOV weights</span></div>
+      <div class="metric"><strong>5.47%</strong><span>Estimated volatility</span></div>
+      <div class="metric"><strong>65%</strong><span>Reserve-eligible weight</span></div>
+    </div>
+  </div>
+  <div class="counter">4 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 2 · Validation</div>
+  <h2>Known answers and stress tests</h2>
+  <table>
+    <thead><tr><th>Test</th><th>Result</th><th>What it establishes</th></tr></thead>
+    <tbody>
+      <tr><td>Training benchmark</td><td>6.80% return, 10.46% volatility</td><td>Covariance and portfolio-return arithmetic</td></tr>
+      <tr><td>Invalid correlation</td><td>Refuses values outside −1 to +1</td><td>Input validation</td></tr>
+      <tr><td>VTI return stress</td><td>12.0% to 8.0% shifts mix to 10 / 40 / 0 / 50</td><td>Estimate sensitivity</td></tr>
+      <tr><td>Last 36 months</td><td>5 / 10 / 0 / 85</td><td>Window choice changes the answer</td></tr>
+      <tr><td>70% SGOV floor</td><td>No feasible five-point mix at 6.5%</td><td>Constraint feasibility</td></tr>
+    </tbody>
+  </table>
+  <div class="counter">5 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 2 · Point-in-time evidence</div>
+  <h2>BAA vintage rule</h2>
+  <div class="two">
+    <div>
+      <div class="metric"><strong>6.32%</strong><span>August 2026 BAA, latest known on September 30</span></div>
+      <p>September’s 6.47% reading was published later. Using it on September 30 would introduce look-ahead bias.</p>
+    </div>
+    <div>
+      <h3>Use condition</h3>
+      <p>Use BAA only with the matching ALFRED vintage for the decision date. The current app documents the signal; it does not automatically override the allocation.</p>
+    </div>
+  </div>
+  <div class="note">Source: FRED/ALFRED Moody’s Seasoned Baa Corporate Bond Yield, series BAA. The app treats the recorded vintage rule as a condition of use.</div>
+  <div class="counter">6 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 3 · Committee decision</div>
+  <h2>Base, baselines, and cost stress</h2>
+  <table>
+    <thead><tr><th>Portfolio or scenario</th><th>Estimated return</th><th>Estimated volatility</th><th>Mandate result</th></tr></thead>
+    <tbody>
+      <tr><td>Equal-weight baseline</td><td>6.26%</td><td>8.70%</td><td>Fails return objective</td></tr>
+      <tr><td>60% VTI / 40% BND benchmark</td><td>7.02%</td><td>11.37%</td><td>Fails SGOV reserve rule</td></tr>
+      <tr><td>Constrained base</td><td>6.54% gross</td><td>5.47%</td><td>Passes checkable gross rules</td></tr>
+      <tr><td>0.20% annual cost stress</td><td>6.34% net</td><td>—</td><td>Fails 6.5% objective</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:25px">The cost stress stops a funded recommendation. The model supports a paper pilot, not live adoption.</p>
+  <div class="counter">7 / 8</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Video 3 · Conditions and monitoring</div>
+  <h2>Paper pilot with explicit stop conditions</h2>
+  <div class="two">
+    <div>
+      <h3>Committee action</h3>
+      <p><strong>Paper pilot with 0% funded capital.</strong> Do not adopt a live allocation until net-of-cost return assumptions support the 6.5% objective.</p>
+      <h3 style="margin-top:28px">Reference scenario span</h3>
+      <p>VTI 5–40%; VXUS 0–40%; BND 0%; SGOV 50–85%. These are sensitivity results, not simultaneous recommended weights.</p>
+    </div>
+    <div>
+      <h3>Monitor</h3>
+      <ul><li>Return estimates and the sample window</li><li>Implementation costs</li><li>BAA vintage compliance</li><li>Changes to objective or reserve rule</li></ul>
+      <h3 style="margin-top:20px">Stop or reoptimize if</h3>
+      <p>Costs prevent the objective, the 70% reserve floor becomes relevant, or the point-in-time rule cannot be followed.</p>
+    </div>
+  </div>
+  <div class="counter">8 / 8</div>
+</section>
+
+<div class="controls">Use ← → keys, space, or click to move through slides</div>
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let current = 0;
+  function show(index) { current = (index + slides.length) % slides.length; slides.forEach((slide, i) => slide.classList.toggle('active', i === current)); }
+  document.addEventListener('keydown', event => { if (event.key === 'ArrowRight' || event.key === ' ') show(current + 1); if (event.key === 'ArrowLeft') show(current - 1); });
+  document.addEventListener('click', event => show(current + 1));
+</script>
+</body>
+</html>

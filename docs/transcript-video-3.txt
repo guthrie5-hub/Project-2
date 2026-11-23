@@ -1,0 +1,15 @@
+Video 3 — Committee presentation
+
+I used Codex to help write and debug the app and organize documentation. The analysis and decision are mine. This is education, not investment advice.
+
+This live dashboard shows the committee decision. The constrained base mix passes the gross checkable rules, but the cost stress reduces its estimated return below the objective. My committee action is a paper pilot with zero funded capital. I do not recommend a live allocation today.
+
+The equal-weight baseline has a 6.26% estimated return and fails the objective. The 60% VTI and 40% BND benchmark reaches a 7.02% estimated return but fails the SGOV reserve rule. The constrained base has the lowest modeled volatility of these three and meets the gross checkable rules.
+
+However, the 0.20% cost stress takes the base from 6.54% to 6.34%. Since the mandate sets a 6.5% objective, I withhold a funded recommendation.
+
+The scenario results span VTI from 5% to 40%, VXUS from 0% to 40%, BND at 0%, and SGOV from 50% to 85%. That span reflects different inputs and windows. It does not represent one simultaneous recommended allocation range.
+
+The portfolio owner should monitor implementation costs, return estimates, the difference between the full historical sample and the last 36 months, BAA vintage compliance, and changes to the objective or reserve floor.
+
+The committee should stop or reoptimize if costs continue to prevent the net objective, a 70% reserve requirement becomes relevant, or the point-in-time data rule cannot be followed. The decision changes toward adoption only with defensible net-of-cost return evidence and a more stable allocation across reasonable input changes.

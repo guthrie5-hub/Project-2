@@ -1,0 +1,101 @@
+# My Portfolio Mandate and Price Data
+
+## Objective and hard constraint
+
+| Item | Choice |
+|---|---|
+| Objective | Earn a 6.5% annual expected return over a seven-year horizon. |
+| Hard constraint | Keep at least 3% of portfolio value in the cash-like Treasury sleeve (SGOV). |
+
+## Fund universe
+
+| Ticker | Fund | Role |
+|---|---|---|
+| SGOV | iShares 0–3 Month Treasury Bond ETF | Cash-like Treasury sleeve |
+| BND | Vanguard Total Bond Market ETF | Broad U.S. fixed-income sleeve |
+| VTI | Vanguard Total Stock Market ETF | U.S. equity sleeve |
+| VXUS | Vanguard Total International Stock ETF | International equity sleeve |
+
+## Portfolio-engine flow
+
+```mermaid
+flowchart TD
+    A[prices.csv: monthly adjusted closes] --> B[Monthly returns]
+    B --> C[Arithmetic mean monthly return × 12]
+    B --> D[Monthly standard deviation × √12]
+    B --> E[Correlation matrix]
+    C --> F[Return estimates]
+    D --> G[Covariance matrix]
+    E --> G
+    F --> H[5-point long-only candidate weights]
+    H --> I[Expected-return and reserve tests]
+    H --> J[Portfolio volatility]
+    G --> J
+    I --> K[Valid mixes]
+    J --> L[Compare valid-mix volatility]
+    K --> L
+    L --> M[Lowest-volatility valid mix]
+```
+
+## Historical-estimate app runs
+
+These returns are **annualized arithmetic means of monthly returns** (monthly arithmetic mean × 12), not compounded returns, forecasts, or CAGRs. Volatilities and correlations are also historical estimates from the downloaded monthly prices.
+
+| Run | Weights: VTI / VXUS / BND / SGOV | Expected return | Volatility | Reserve-eligible weight |
+|---|---:|---:|---:|---:|
+| All 59 monthly returns | 30% / 5% / 0% / 65% | 6.54% | 5.47% | 65% |
+| Last 36 monthly returns | 5% / 10% / 0% / 85% | 6.75% | 1.74% | 85% |
+
+Largest weight change between the two mixes: **25 percentage points** (VTI). The different answer shows that the selected historical window changes the estimates and the lowest-risk mix; it does not prove which period will repeat.
+
+## Partner attack and response
+
+**Partner attack:** The 12.0% historical VTI return estimate is the estimate I distrust most; lowering it to 8.0% changes the all-month answer to 10% VTI, 40% VXUS, 0% BND, and 50% SGOV, with 6.57% expected return and 7.50% volatility. **My answer:** The mix changes materially, so the historical VTI average is a load-bearing estimate rather than a forecast; I would monitor future equity-return assumptions and would not treat the original 30% VTI mix as certain.
+
+## Lab 15 starting-allocation call (historical)
+
+This was the earlier Lab 15 call before the final Project 2 cost/constraint stresses. The final committee decision is in [`docs/decision-memo.md`](docs/decision-memo.md).
+
+**Pilot, not adopt:** Use the all-month 30% VTI / 5% VXUS / 0% BND / 65% SGOV mix only as the Project 2 starting allocation. Reoptimize before adopting it if the VTI return estimate is revised down to 8.0% or if the trailing-36-month evidence remains the more relevant regime, because those changes materially alter the weights and show that the optimizer amplifies estimate risk.
+
+## `prices.csv` data record
+
+`prices.csv` contains 60 monthly adjusted-close observations for each ticker, covering October 2021 through September 2026. The date column is Yahoo Finance's monthly interval timestamp; prices are in USD and are its `adjclose` field, rather than unadjusted close.
+
+| Ticker | Source | Download date |
+|---|---|---|
+| SGOV | [Yahoo Finance chart data](https://query2.finance.yahoo.com/v8/finance/chart/SGOV?period1=1633046400&amp;period2=1790812800&amp;interval=1mo&amp;events=history&amp;includeAdjustedClose=true) | 2026-10-22 |
+| BND | [Yahoo Finance chart data](https://query2.finance.yahoo.com/v8/finance/chart/BND?period1=1633046400&amp;period2=1790812800&amp;interval=1mo&amp;events=history&amp;includeAdjustedClose=true) | 2026-10-22 |
+| VTI | [Yahoo Finance chart data](https://query2.finance.yahoo.com/v8/finance/chart/VTI?period1=1633046400&amp;period2=1790812800&amp;interval=1mo&amp;events=history&amp;includeAdjustedClose=true) | 2026-10-22 |
+| VXUS | [Yahoo Finance chart data](https://query2.finance.yahoo.com/v8/finance/chart/VXUS?period1=1633046400&amp;period2=1790812800&amp;interval=1mo&amp;events=history&amp;includeAdjustedClose=true) | 2026-10-22 |
+
+## BAA point-in-time data card
+
+| Field | Record |
+|---|---|
+| Source | [FRED: Moody's Seasoned Baa Corporate Bond Yield (BAA)](https://fred.stlouisfed.org/series/BAA) and its ALFRED vintage download |
+| What it measures | Moody's Seasoned Baa Corporate Bond Yield; a broad corporate-credit yield relevant to bond pricing and financial conditions for the portfolio's equity sleeves. |
+| Units and frequency | Percent, not seasonally adjusted; monthly. |
+| Publication lag | The September 2026 observation was not available on 30 September: the 30 September vintage ended at August 2026. It appeared by 1 October as September 2026 = 6.47. |
+| Revisions | In the 30 September 2026 vintage comparison, zero same-date BAA values had been revised; FRED still notes that data are subject to revision. |
+| Download date | 2026-10-29 |
+
+Three values checked against the FRED series page: July 2026 = 6.19, August 2026 = 6.32, and September 2026 = 6.47. On 30 September, the app's latest knowable value was August 2026 = 6.32; today it includes September 2026 = 6.47, one later value and zero revisions. BAA is monthly rather than a daily market rate, so it has a publication lag in this test.
+
+**Project 2 series call — Admit with a point-in-time rule:** BAA is a relevant credit-condition input for the bond and equity sleeves, but each decision date may use only the ALFRED vintage available that day, never today's completed series. Quarantine it if a needed vintage cannot be retrieved or a publication-date issue prevents establishing what was knowable; admit it again once that evidence is available.
+
+## Skeptical self-check
+
+**Challenge:** If the September 2026 BAA value was published on 1 October, how does the model avoid using it for a 30 September trade? **Response:** The app requests the ALFRED vintage dated 30 September, which ends at August 2026 = 6.32, rather than using today's FRED value of September 2026 = 6.47. Using 6.47 at that earlier decision date would be look-ahead bias, so the series remains admissible only with its matching vintage date recorded.
+
+## Archived Lab 18–19 SEC investor-panel evidence
+
+This section preserves separate course-lab work. It is not used to select the Project 2 portfolio, calculate its allocations, or support the paper-pilot decision.
+
+The shared SEC EDGAR five-year 10-K panel reproduced Costco's required outcome: Buffett 3 of 3 passes; Graham 2 of 3, with the 1.06 latest current ratio failing the 2.00 cutoff; and Burry 2 of 2 passes. The Graham threshold probe lowered the cutoff to 1.00 in a temporary run; Costco then passed that check. The code remains set to the course-defined 2.00 threshold.
+
+Adobe (ADBE) was also run through the live panel as a target-company engine check. Buffett passed 3 of 3; Graham passed 2 of 3 because Adobe's latest current ratio was 1.00, below 2.00; and Burry passed 2 of 2. The saved evidence is `ADBE_panel_output.txt` plus the three Adobe memo files. This does not claim that Adobe is the portfolio's largest underlying holding; that holding must be identified from the relevant fund's official holdings disclosure before using it as the required fund-company run.
+
+Apple (AAPL) was selected as an additional live company test. Buffett passed 3 of 3; Graham passed 2 of 3 because the latest current ratio was 1.02; and Burry failed both checks because operating cash flow was below net income in FY2025 and latest liabilities/equity was 2.61x. The saved evidence is `AAPL_panel_output.txt` plus the three Apple memo files. Apple is recorded as a selected test company, not as an asserted largest holding without a fund-holdings source.
+
+**Panel decision:** Only with a condition: use the panel as a repeatable first screen only when every result is traced to the latest five 10-K facts and any `not known` result is investigated rather than treated as a pass.
