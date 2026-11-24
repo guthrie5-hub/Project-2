@@ -2,7 +2,7 @@
 
 AI used: Codex helped create this record; the cold review must be performed by an independent human. Education, not investment advice.
 
-**Status: completed with a reproducibility failure.** An independent partner received the repository and followed the README without coaching. Their 23 November 2026 review is recorded below. The repository layout, not the portfolio calculations, caused the first failure.
+**Status: partner review found a reproducibility failure; source layout was repaired and an automated clean-room rerun passed.** An independent partner received the repository and followed the README without coaching. Their 23 November 2026 review is recorded below. The repository layout, not the portfolio calculations, caused the first failure. The later automated check is documented separately and is not represented as a partner review.
 
 | Field | Reviewer record |
 |---|---|
@@ -14,6 +14,17 @@ AI used: Codex helped create this record; the cold review must be performed by a
 | Where the visible result appeared | App Overview tab: constrained mix, mandate verdict, cost-stress failure, and paper-pilot warning. Written result: README decision section, `docs/decision-memo.md`, and `docs/visible-output.md`. |
 | Did it match `docs/visible-output.md`? | Yes. Base mix 30/5/0/65 at 6.54% return and 5.47% volatility; cost stress 6.34%; VTI 12%→8% stress 10/40/0/50; last-36-month mix 5/10/0/85; and 70% reserve floor had no feasible mix. |
 | Reviewer name and date | Independent partner reviewer, 23 November 2026. Student must add the reviewer’s name before final submission. |
+
+## Post-repair automated clean-room rerun
+
+| Field | Result |
+|---|---|
+| Repository URL and commit | `https://github.com/guthrie5-hub/Project-2`, `1e7f088` (23 November 2026) |
+| Environment | Fresh clone; Python 3.13.16; new virtual environment; pinned `requirements.txt` dependencies. |
+| README commands | Dependency install, the three optional terminal scripts, and `python3 -m unittest discover -s tests -v` all passed from the clone root. |
+| App check | Streamlit `AppTest` loaded `app.py` with no exception. This is a technical app-load test, not a substitute for a human browser review. |
+| First failure | None after the root-layout repair. |
+| Result location | App Overview tab and `docs/visible-output.md` show the committee result. |
 
 ## Partner observations retained for repair
 
