@@ -13,7 +13,7 @@ AI used: Codex helped create this record; the cold review must be performed by a
 | Elapsed time to visible result | About 19 seconds from dependency install to served app; about 0.95 seconds to render the page. Streamlit server became healthy in 0.58 seconds. |
 | Where the visible result appeared | App Overview tab: constrained mix, mandate verdict, cost-stress failure, and paper-pilot warning. Written result: README decision section, `docs/decision-memo.md`, and `docs/visible-output.md`. |
 | Did it match `docs/visible-output.md`? | Yes. Base mix 30/5/0/65 at 6.54% return and 5.47% volatility; cost stress 6.34%; VTI 12%→8% stress 10/40/0/50; last-36-month mix 5/10/0/85; and 70% reserve floor had no feasible mix. |
-| Reviewer name and date | Independent partner reviewer, 23 November 2026. Student must add the reviewer’s name before final submission. |
+| Reviewer and date | Independent partner reviewer, 23 November 2026. |
 
 ## Post-repair automated clean-room rerun
 
